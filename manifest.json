@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Collab Dashboard",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://collab.its.virginia.edu/*"
+      ],
+      "js": ["feedcontent.js"]
+    }
+  ],
+  "browser_action": {
+  "default_icon": "icon.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "matches": [
+    "https://collab.its.virginia.edu/*"
+    ],
+    "scripts": [
+      "background.js"
+    ]
+  }
+}
