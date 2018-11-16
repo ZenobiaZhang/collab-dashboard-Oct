@@ -5,9 +5,9 @@
   "content_scripts": [
     {
       "matches": [
-        "https://collab.its.virginia.edu/*"
+        "https://collab.its.virginia.edu/*", "chrome-extension://ijbolgeknieoanmnghedaclnecdoonng/index2.html"
       ],
-      "js": ["feedcontent.js"]
+      "js": ["feedcontent.js", "tabulator.min.js", "tabulator.min.css"]
     }
   ],
   "browser_action": {

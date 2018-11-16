@@ -1,0 +1,170 @@
+<html lang="en" class="gr__tabulator_info">
+  <head>
+		<link href="https://unpkg.com/tabulator-tables@4.0.5/dist/css/tabulator.min.css" rel="stylesheet">
+	</head>
+	<body data-gr-c-s-loaded="true" cz-shortcut-listen="true">
+		<div id="example-table" class="tabulator" role="grid" tabulator-layout="fitColumns" style="height: 200px;"></div>
+		<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.0.5/dist/js/tabulator.min.js"></script>
+		<script type="text/javascript" src="feed.js"></script>
+		<script type="text/javascript">
+	//sample data
+	var tabledata = [
+    {
+      "title": "In Class 18: GUI",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1539957600000,
+      "dueDate": 1540006200000
+    },
+    {
+      "title": "Homework 4: Interfaces",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1539205200000,
+      "dueDate": 1540006200000
+    },
+    {
+      "title": "In Class 17: Queues",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1539786600000,
+      "dueDate": 1539833400000
+    },
+    {
+      "title": "In Class 16: Inheritance",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1539612000000,
+      "dueDate": 1539660600000
+    },
+    {
+      "title": "In Class 15: Comparators",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1539349200000,
+      "dueDate": 1539401400000
+    },
+    {
+      "title": "In Class 14: Introduction to Interfaces",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1538748000000,
+      "dueDate": 1538796600000
+    },
+    {
+      "title": "In Class 13: Requirements or Not?",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1538575200000,
+      "dueDate": 1538623800000
+    },
+    {
+      "title": "Homework 3: Classes, part 2",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1537563600000,
+      "dueDate": 1538191800000
+    },
+    {
+      "title": "In Class 12: JUnit Tests",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1537970400000,
+      "dueDate": 1538019000000
+    },
+    {
+      "title": "In Class 11: Testing Scenarios",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1537797600000,
+      "dueDate": 1537846200000
+    },
+    {
+      "title": "Homework 2: Creating Classes",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1537218000000,
+      "dueDate": 1537846200000
+    },
+    {
+      "title": "In Class 10: Maps",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1537538400000,
+      "dueDate": 1537587000000
+    },
+    {
+      "title": "In Class 9: Set of Stickies",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1537365600000,
+      "dueDate": 1537414200000
+    },
+    {
+      "title": "In Class 8: Circle Equality",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1537192800000,
+      "dueDate": 1537241400000
+    },
+    {
+      "title": "In Class 7: Rectangle",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1536933600000,
+      "dueDate": 1536982200000
+    },
+    {
+      "title": "Homework 1: CodingBat and Java Problems",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1536580800000,
+      "dueDate": 1536982200000
+    },
+    {
+      "title": "In Class 6: Microwave",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1536760800000,
+      "dueDate": 1536809400000
+    },
+    {
+      "title": "In Class 5: Remove Duplicates",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1536588000000,
+      "dueDate": 1536636600000
+    },
+    {
+      "title": "In Class 4: Points",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1536328800000,
+      "dueDate": 1536377400000
+    },
+    {
+      "title": "In Class 3: One-D Arrays",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1536156000000,
+      "dueDate": 1536204600000
+    },
+    {
+      "title": "In Class 2: Hot Dogs Activity",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1535983200000,
+      "dueDate": 1536031800000
+    },
+    {
+      "title": "In Class 1 Data Types Matching",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1535720400000,
+      "dueDate": 1535772600000
+    },
+    {
+      "title": "In Class 0 First Day Assessment Activity",
+      "class": "CS 2110 - Fall 2018",
+      "openDate": 1535547600000,
+      "dueDate": 1535599800000
+    }
+  ];
+
+	var table = new Tabulator("#example-table", {
+		height:200, // set height of table to enable virtual DOM
+		data:tabledata, //load initial data into table
+		layout:"fitColumns", //fit columns to width of table (optional)
+    columns:[
+      {title:"Assignment Name", field:"title", sortable:true, width:200},
+      {title:"Class", field:"class", sortable:true},
+      {title:"Due Date", field:"dueDate", sortable:true},
+      {title:"Date Posted", field:"openDate", sortable:true},
+      {title:"Calendar", field:"calendar"},
+      //{title:"Done", field:"done", editable:true, editor:"tick"},
+    ],
+	    rowClick:function(e, id, data, row){ //trigger an alert message when the row is clicked
+	    	alert("Row " + id + " Clicked!!!!");
+	    },
+	});
+</script>
+
+</body></html>

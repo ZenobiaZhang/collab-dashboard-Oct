@@ -1,4 +1,5 @@
 window.onload = replace;
+var tabledata = [];
 //cmd+opt+J
 function replace() {
     const Http = new XMLHttpRequest();
@@ -8,7 +9,7 @@ function replace() {
     Http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var document = parser.parseFromString(Http.responseText, "text/html")
-            toHome(document);
+            toHome(document);   
         }
     }
 }
@@ -39,8 +40,8 @@ function toAssignment(toCourse) {
         }
     }
 }
-
 function scraping(document) {
+    var className = document.getElementsByClassName("Mrphs-sitesNav__menuitem  is-selected ")[0].innerText.trim();
     var dueT = document.getElementsByTagName("td");
     var dueCol = [];
     var j = 0;
@@ -50,22 +51,32 @@ function scraping(document) {
         if (Date.parse(stnd) < Date.parse(Date())) {
         }
         else {
-            dueCol[j] = {title: "", status: "", openDate: "", dueDate: ""};
+            dueCol.push({title: "", class: "", openDate: "", dueDate: ""});
             dueCol[j].title = dueT[i * 5 + 1].innerText.trim();
-            dueCol[j].status = dueT[i * 5 + 2].innerText.trim();
+            dueCol[j].class = className;
             dueCol[j].openDate = dueT[i * 5 + 3].innerText.trim();
             dueCol[j].dueDate = dueT[i * 5 + 4].innerText.trim();
             j = j + 1;
         }
     }
-    console.log(dueCol);
-    $('#Assignment1_Name').html(dueCol[0]["title"]);
+    Array.prototype.push.apply(tabledata, dueCol);
+    $('#Assignment1_Name').html(tabledata[0]["title"]);
+    $('#Assignment1_Class').html(tabledata[0]["class"]);
+    $('#Assignment1_Due').html(tabledata[0]["dueDate"]);
+    $('#Assignment1_Posted').html(tabledata[0]["openDate"]);
+    $('#Assignment2_Name').html(tabledata[1]["title"]);
+    $('#Assignment2_Class').html(tabledata[1]["class"]);
+    $('#Assignment2_Due').html(tabledata[1]["dueDate"]);
+    $('#Assignment2_Posted').html(tabledata[1]["openDate"]);
+    $('#Assignment3_Name').html(tabledata[2]["title"]);
+    $('#Assignment3_Class').html(tabledata[2]["class"]);
+    $('#Assignment3_Due').html(tabledata[2]["dueDate"]);
+    $('#Assignment3_Posted').html(tabledata[2]["openDate"]);
+}
     /*
-    scrape all the assignment from 5 subjects and store it in the same var
-    send this var to the tabulator
+    TODO: send var "tabledata" to the tabulator
+    (which contains unfinished assignments from 
+        all courses in one array of objects)
     **/
-}
+console.log(tabledata);
 
-function callback(body) {
-    return body[0]["title"];
-}
