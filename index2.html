@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Collab Dashboard</title>
+    <link rel="stylesheet" href="tabulator.css">
     <link rel="stylesheet" href="materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -76,7 +77,10 @@
     <div class="container">
     <div class="row">
         <div class="col s12 cards-container" style="padding-left: 0px;">
-           <div class="card z-depth-2 hoverable" style="width: 100%;margin-top: 0px;margin-left: 0px;margin-bottom: 20px;margin-right: 10px;">
+
+          <div id="example-table" class="tabulator" role="grid" tabulator-layout="fitColumns" style="height: 200px;"></div>
+
+          <div class="card z-depth-2 hoverable" style="width: 100%;margin-top: 0px;margin-left: 0px;margin-bottom: 20px;margin-right: 10px;">
              <div class="card-content">
                <span class="card-title">New Assignments</span>
                <table class="highlight">
@@ -212,9 +216,9 @@
                </div>
         </div>
       </div>
-      </div>
+    </div>
 
-      <div class="container">
+    <div class="container">
         <ul class="collapsible popout">
           <li>
             <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
@@ -229,16 +233,7 @@
             <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
           </li>
         </ul>
-      </div>
-
-
-
-
-
-
-
-
-
+    </div>
 
     <footer class="page-footer indigo center-allign">
       <div class="container center-align">
@@ -251,22 +246,7 @@
     <script src="materialize.min.js"></script>
     <script src="sidenav.js"></script>
     <script src="feedcontent.js"></script>
-
-    <link rel="stylesheet" href="tabulator.css">
-    <script type="text/javascript" src="tabulator.js"></script>
-    
-    <head>
-      <link href="https://unpkg.com/tabulator-tables@4.0.5/dist/css/tabulator.min.css" rel="stylesheet">
-    </head>
-    <body data-gr-c-s-loaded="true" cz-shortcut-listen="true">
-      <div id="example-table" class="tabulator" role="grid" tabulator-layout="fitColumns" style="height: 200px;"></div>
-      <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.0.5/dist/js/tabulator.min.js"></script>
-      <script type="text/javascript" src="feedcontent.js"></script>
-      <script type="text/javascript">
-        //try to integrate tabulator but is not working?
-        $("#example-table").tabulator({});
-      </script>
-    </body>
+    <script src="tabulator.js"></script>
     
   </body>
 </html>

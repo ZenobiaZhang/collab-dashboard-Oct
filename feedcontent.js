@@ -72,6 +72,24 @@ function scraping(document) {
     $('#Assignment3_Class').html(tabledata[2]["class"]);
     $('#Assignment3_Due').html(tabledata[2]["dueDate"]);
     $('#Assignment3_Posted').html(tabledata[2]["openDate"]);
+    //how to delete original new assignment???
+
+    var table = new Tabulator("#example-table", {
+        height:200, // set height of table to enable virtual DOM
+        data:tabledata, //load initial data into table
+        layout:"fitColumns", //fit columns to width of table (optional)
+        columns:[
+          {title:"Assignment Name", field:"title", sortable:true, width:200},
+          {title:"Class", field:"class", sortable:true},
+          {title:"Due Date", field:"dueDate", sortable:true},
+          {title:"Date Posted", field:"openDate", sortable:true},
+          {title:"Calendar", field:"calendar"},
+          //{title:"Done", field:"done", editable:true, editor:"tick"},
+        ],
+          rowClick:function(e, id, data, row){ //trigger an alert message when the row is clicked
+            alert("Row " + id + " Clicked!!!!");
+          },
+      });
 }
     /*
     TODO: send var "tabledata" to the tabulator
